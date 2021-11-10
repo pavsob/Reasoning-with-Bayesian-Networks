@@ -12,6 +12,6 @@ Picture: Alert system using Bayesian networks
   
 </div>
 
-Further there is implemented program that is capable of merging Bayesian networks.
+Further, there is implemented a program that is capable of merging Bayesian networks.
 
-For more details - read the report.
+For more details - read the included report.

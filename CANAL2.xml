@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BIF VERSION="0.3"  xmlns="http://www.cs.ubc.ca/labs/lci/fopi/ve/XMLBIFv0_3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.cs.ubc.ca/labs/lci/fopi/ve/XMLBIFv0_3 http://www.cs.ubc.ca/labs/lci/fopi/ve/XMLBIFv0_3/XMLBIFv0_3.xsd">
+<NETWORK>
+<NAME>Untitled</NAME>
+<PROPERTY>detailed = </PROPERTY>
+<PROPERTY>short = </PROPERTY>
+
+<VARIABLE TYPE="nature">
+	<NAME>Weather</NAME>
+	<OUTCOME>Good</OUTCOME>
+	<OUTCOME>Bad</OUTCOME>
+	<PROPERTY>position = (7459.1083984375, 5076.20166015625)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Tide</NAME>
+	<OUTCOME>Low</OUTCOME>
+	<OUTCOME>High</OUTCOME>
+	<PROPERTY>position = (7604.4814453125, 5065.81884765625)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Canal Busy</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7742.947265625, 5076.25634765625)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Giant Ships</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7306.4072265625, 5126.3486328125)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Traffic Sensor</NAME>
+	<OUTCOME>High</OUTCOME>
+	<OUTCOME>Low</OUTCOME>
+	<PROPERTY>position = (7768.42724609375, 5262.345703125)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Risk Giant Ship Get Stuck</NAME>
+	<OUTCOME>less3%</OUTCOME>
+	<OUTCOME>more3%</OUTCOME>
+	<PROPERTY>position = (7578.65771484375, 5252.4423828125)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Reduce Speed</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7668.76708984375, 5406.18115234375)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Weather Sensor</NAME>
+	<OUTCOME>Good</OUTCOME>
+	<OUTCOME>Bad</OUTCOME>
+	<PROPERTY>position = (7521.14404296875, 5158.5947265625)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Alert</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7583.69873046875, 5324.89892578125)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Construction Work</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7276.0, 5213.0)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Police Warning</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7883.0, 5274.0)</PROPERTY>
+</VARIABLE>
+
+<DEFINITION>
+	<FOR>Weather</FOR>
+	<TABLE>0.65 0.35</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Tide</FOR>
+	<TABLE>0.25 0.75</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Canal Busy</FOR>
+	<TABLE>0.2 0.8</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Giant Ships</FOR>
+	<TABLE>0.9 0.1</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Traffic Sensor</FOR>
+	<GIVEN>Canal Busy</GIVEN>
+	<TABLE>0.9 0.1 0.1 0.9</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Risk Giant Ship Get Stuck</FOR>
+	<GIVEN>Tide</GIVEN>
+	<GIVEN>Canal Busy</GIVEN>
+	<GIVEN>Giant Ships</GIVEN>
+	<GIVEN>Weather Sensor</GIVEN>
+	<GIVEN>Construction Work</GIVEN>
+	<TABLE>0.0 1.0 0.0 1.0 0.0 1.0 0.0 1.0 1.0 0.0 1.0 0.0 1.0 0.0 1.0 0.0 0.0 1.0 1.0 0.0 0.0 1.0 0.0 1.0 1.0 0.0 1.0 0.0 1.0 0.0 1.0 0.0 0.0 1.0 1.0 0.0 0.0 1.0 0.0 1.0 1.0 0.0 1.0 0.0 1.0 0.0 1.0 0.0 1.0 0.0 1.0 0.0 0.0 1.0 1.0 0.0 1.0 0.0 1.0 0.0 1.0 0.0 1.0 0.0</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Reduce Speed</FOR>
+	<GIVEN>Traffic Sensor</GIVEN>
+	<GIVEN>Alert</GIVEN>
+	<GIVEN>Police Warning</GIVEN>
+	<TABLE>0.999 0.001 0.99 0.01 0.99 0.01 0.01 0.99 0.994 0.006 0.95 0.05 0.99 0.01 0.005 0.995</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Weather Sensor</FOR>
+	<GIVEN>Weather</GIVEN>
+	<TABLE>0.99 0.01 0.01 0.99</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Alert</FOR>
+	<GIVEN>Risk Giant Ship Get Stuck</GIVEN>
+	<TABLE>0.0 1.0 1.0 0.0</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Construction Work</FOR>
+	<TABLE>0.07 0.93</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Police Warning</FOR>
+	<TABLE>0.02 0.98</TABLE>
+</DEFINITION>
+</NETWORK>
+</BIF>

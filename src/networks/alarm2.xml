@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BIF VERSION="0.3"  xmlns="http://www.cs.ubc.ca/labs/lci/fopi/ve/XMLBIFv0_3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.cs.ubc.ca/labs/lci/fopi/ve/XMLBIFv0_3 http://www.cs.ubc.ca/labs/lci/fopi/ve/XMLBIFv0_3/XMLBIFv0_3.xsd">
+<NETWORK>
+<NAME>Fire Alarm Belief Network</NAME>
+<PROPERTY>detailed = This example models the problem of whether a fire alarm went off because of tampering or a fire. This is Figure 6.1 of Poole and Mackworth, Artificial Intelligence: foundations of computational agents. Copyright Poole and Mackworth, 2010, and used in Examples 6.10, 6.12, 6.13, 6.15, 6.20, 6.21, 6.23, 6.24, 6.26, and 6.27. This may be used under a Creative Commons Attribution-Noncommercial-Share Alike 2.5 Canada License http://creativecommons.org/licenses/by-nc-sa/2.5/ca/</PROPERTY>
+<PROPERTY>short = Fire Alarm Belief Network Example of Poole and Mackworth, Artificial Intelligence.</PROPERTY>
+
+<VARIABLE TYPE="nature">
+	<NAME>Burglary</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7363.0, 5056.0)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Earthquake</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7533.0, 5058.0)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>alarm</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7451.8525390625, 5172.078125)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>leaving</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7453.28076171875, 5293.333984375)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>report</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7454.7099609375, 5406.02490234375)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Night</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7240.0, 5006.0)</PROPERTY>
+</VARIABLE>
+
+<DEFINITION>
+	<FOR>Burglary</FOR>
+	<GIVEN>Night</GIVEN>
+	<TABLE>0.3 0.7 0.02 0.98</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Earthquake</FOR>
+	<TABLE>0.01 0.99</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>alarm</FOR>
+	<GIVEN>Burglary</GIVEN>
+	<GIVEN>Earthquake</GIVEN>
+	<TABLE>0.99 0.01 0.84 0.16 0.9 0.1 0.001 0.999</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>leaving</FOR>
+	<GIVEN>alarm</GIVEN>
+	<TABLE>0.88 0.12 0.0 1.0</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>report</FOR>
+	<GIVEN>leaving</GIVEN>
+	<TABLE>0.75 0.25 0.01 0.99</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Night</FOR>
+	<TABLE>0.3 0.7</TABLE>
+</DEFINITION>
+</NETWORK>
+</BIF>

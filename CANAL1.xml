@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BIF VERSION="0.3"  xmlns="http://www.cs.ubc.ca/labs/lci/fopi/ve/XMLBIFv0_3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.cs.ubc.ca/labs/lci/fopi/ve/XMLBIFv0_3 http://www.cs.ubc.ca/labs/lci/fopi/ve/XMLBIFv0_3/XMLBIFv0_3.xsd">
+<NETWORK>
+<NAME>Untitled</NAME>
+<PROPERTY>detailed = </PROPERTY>
+<PROPERTY>short = </PROPERTY>
+
+<VARIABLE TYPE="nature">
+	<NAME>Weather</NAME>
+	<OUTCOME>Good</OUTCOME>
+	<OUTCOME>Bad</OUTCOME>
+	<PROPERTY>position = (7364.55078125, 5091.20361328125)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Tide</NAME>
+	<OUTCOME>Low</OUTCOME>
+	<OUTCOME>High</OUTCOME>
+	<PROPERTY>position = (7548.23291015625, 5078.08056640625)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Canal Busy</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7723.177734375, 5091.26513671875)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Giant Ships</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7171.60888671875, 5154.5576171875)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Traffic Sensor</NAME>
+	<OUTCOME>High</OUTCOME>
+	<OUTCOME>Low</OUTCOME>
+	<PROPERTY>position = (7755.3828125, 5326.39892578125)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Risk Giant Ship Get Stuck</NAME>
+	<OUTCOME>less3%</OUTCOME>
+	<OUTCOME>more3%</OUTCOME>
+	<PROPERTY>position = (7515.60693359375, 5313.8857421875)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Reduce Speed</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7629.45068359375, 5508.1337890625)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Weather Sensor</NAME>
+	<OUTCOME>Good</OUTCOME>
+	<OUTCOME>Bad</OUTCOME>
+	<PROPERTY>position = (7442.93505859375, 5195.31396484375)</PROPERTY>
+</VARIABLE>
+
+<VARIABLE TYPE="nature">
+	<NAME>Alert</NAME>
+	<OUTCOME>T</OUTCOME>
+	<OUTCOME>F</OUTCOME>
+	<PROPERTY>position = (7521.96435546875, 5405.43603515625)</PROPERTY>
+</VARIABLE>
+
+<DEFINITION>
+	<FOR>Weather</FOR>
+	<TABLE>0.65 0.35</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Tide</FOR>
+	<TABLE>0.25 0.75</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Canal Busy</FOR>
+	<TABLE>0.2 0.8</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Giant Ships</FOR>
+	<TABLE>0.8 0.2</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Traffic Sensor</FOR>
+	<GIVEN>Canal Busy</GIVEN>
+	<TABLE>0.9 0.1 0.1 0.9</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Risk Giant Ship Get Stuck</FOR>
+	<GIVEN>Tide</GIVEN>
+	<GIVEN>Canal Busy</GIVEN>
+	<GIVEN>Giant Ships</GIVEN>
+	<GIVEN>Weather Sensor</GIVEN>
+	<TABLE>0.0 1.0 0.0 1.0 1.0 0.0 1.0 0.0 1.0 0.0 0.0 1.0 1.0 0.0 1.0 0.0 1.0 0.0 0.0 1.0 1.0 0.0 1.0 0.0 1.0 0.0 1.0 0.0 1.0 0.0 1.0 0.0</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Reduce Speed</FOR>
+	<GIVEN>Traffic Sensor</GIVEN>
+	<GIVEN>Alert</GIVEN>
+	<TABLE>0.99 0.01 0.01 0.99 0.95 0.05 0.005 0.995</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Weather Sensor</FOR>
+	<GIVEN>Weather</GIVEN>
+	<TABLE>0.99 0.01 0.01 0.99</TABLE>
+</DEFINITION>
+
+<DEFINITION>
+	<FOR>Alert</FOR>
+	<GIVEN>Risk Giant Ship Get Stuck</GIVEN>
+	<TABLE>0.0 1.0 1.0 0.0</TABLE>
+</DEFINITION>
+</NETWORK>
+</BIF>
